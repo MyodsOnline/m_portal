@@ -41,6 +41,10 @@
 
 .dark:hover {
     color: #fff;
-    background-color: #343a40;
+    background-color: #cfcfcf;
     border-color: #343a40;
+}
+
+.show.dropdown-menu {
+    right: 0;
 }
