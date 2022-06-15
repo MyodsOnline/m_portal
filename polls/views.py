@@ -1,6 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView
-
+from django.views.generic import ListView, DetailView
 from .models import Content
 
 
@@ -13,6 +12,12 @@ class ContentView(ListView):
         content['title'] = 'Mediaportal'
         content['greeting'] = 'Welcome %user_name!'
         return content
+
+
+class SingleContentView(DetailView):
+    model = Content
+    template_name = 'single.html'
+    fields = '__all__'
 
 
 def main(request):

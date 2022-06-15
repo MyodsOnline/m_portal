@@ -1,0 +1,18 @@
+.item_upd {
+    position: relative;
+    display: block;
+    padding: 0.55rem 1rem;
+    background-color: #fff;
+    font-weight: 300;
+    /* border: 1px solid rgba(0,0,0,.125); */
+}
+.menu_item_main {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin: 0.55rem 0;
+    font-weight: 700;
+}
+
+.single {
+    display: flex;
+    margin: 30px 0 0;
+}

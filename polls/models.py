@@ -6,7 +6,7 @@ from django.urls import reverse
 class Category(models.Model):
     type = models.CharField(max_length=120, unique=True, verbose_name='Тип контента')
     slug = models.SlugField(max_length=30, unique=True, verbose_name='slug')
-    description = models.CharField(max_length=300, verbose_name='Описание типа')
+    description = models.CharField(max_length=300, blank=True, verbose_name='Описание типа')
 
     def __str__(self):
         return self.type
@@ -71,7 +71,7 @@ class Content(models.Model):
         ordering = ('-created',)
 
     def get_absolute_url(self):
-        return reverse('content', kwargs={'slug': self.slug})
+        return reverse('single', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title
