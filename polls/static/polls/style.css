@@ -48,3 +48,9 @@
 .show.dropdown-menu {
     right: 0;
 }
+
+.comment {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 30px;
+}
