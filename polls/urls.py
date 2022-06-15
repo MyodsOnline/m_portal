@@ -1,7 +1,7 @@
 from django.urls import path, include
 
-from .views import main
+from .views import main, ContentView
 
 urlpatterns = [
-    path('', main, name='polls'),
+    path('', ContentView.as_view(), name='polls'),
 ]

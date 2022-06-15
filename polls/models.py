@@ -15,12 +15,12 @@ class Category(models.Model):
         return reverse('category_tag', kwargs={'slug': self.slug})
 
 
-class Portal_User(User):
-    portal_user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Пользователь портала')
-    slug = models.SlugField(max_length=30, unique=True)
-
-    def __str__(self):
-        return self.portal_user
+# class Portal_User(User):
+#     portal_user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Пользователь портала')
+#     slug = models.SlugField(max_length=30, unique=True)
+#
+#     def __str__(self):
+#         return self.portal_user
 
 
 class Tag(models.Model):
@@ -46,7 +46,7 @@ class Author(models.Model):
 
 
 class Content(models.Model):
-    title = models.CharField(max_length=120, unique=True, verbose_name='Тип контента')
+    title = models.CharField(max_length=120, unique=True, verbose_name='Название')
     tagline = models.CharField(max_length=120, unique=True, verbose_name='Краткое описание')
     file = models.FileField(upload_to='media/%Y/data', verbose_name='Файл', blank=True)
     category = models.ForeignKey(Category,
@@ -60,6 +60,7 @@ class Content(models.Model):
                                related_name='content_author',
                                verbose_name='Автор')
     slug = models.SlugField(max_length=200, unique=True, verbose_name='slug')
+    link = models.URLField(blank=True, verbose_name='Ссылка на источник')
     text = models.TextField(verbose_name='Описание контента', blank=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated = models.DateTimeField(auto_now=True)
