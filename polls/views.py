@@ -1,6 +1,11 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
+
+from pytils.translit import slugify
+
 from .models import Content
+from .forms import ContentForm
 
 
 class ContentView(ListView):
@@ -18,6 +23,13 @@ class SingleContentView(DetailView):
     model = Content
     template_name = 'single.html'
     fields = '__all__'
+
+
+class CreateContentView(CreateView):
+    model = Content
+    template_name = 'add.html'
+    form_class = ContentForm
+    success_url = reverse_lazy('polls')
 
 
 def main(request):

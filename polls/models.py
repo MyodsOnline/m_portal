@@ -56,7 +56,7 @@ class Content(models.Model):
     image = models.ImageField(upload_to='media/%Y/images', verbose_name='Изображения', blank=True)
     author = models.ForeignKey(Author,
                                on_delete=models.PROTECT,
-                               blank=True,
+                               blank=True, null=True,
                                related_name='content_author',
                                verbose_name='Автор')
     slug = models.SlugField(max_length=200, unique=True, verbose_name='slug')

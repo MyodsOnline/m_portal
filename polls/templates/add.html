@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Название (обязательное поле)</label>
+        {{ form.title }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.tagline.id_for_label }}">Краткое описание (обязательное поле)</label>
+        {{ form.tagline }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.category.id_for_label }}">Категория контента (обязательное поле)</label>
+        {{ form.category }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.text.id_for_label }}">Текстовое описание</label>
+        {{ form.text }}
+    </div>
+
+    <input class="btn btn-success" type="submit" value="Сохранить">
+</form>
+
+
+{% endblock %}
