@@ -42,7 +42,7 @@ class AddComment(View):
             form = form.save(commit=False)
             form.content = content
             form.save()
-        return redirect('/')
+        return redirect(content.get_absolute_url())
 
 
 def main(request):

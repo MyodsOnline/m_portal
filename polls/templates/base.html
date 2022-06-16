@@ -9,98 +9,91 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-2 pt-3">
-            <ul class="list-group">
-                <li class="item_upd menu_item_main">Источник:</li>
-                    <li class="item_upd menu_item">Видео техучебы</li>
-                    <li class="item_upd menu_item">Медиапортал СО ЕЭС</li>
-                    <li class="item_upd menu_item">Лекции в Эксперте</li>
-                    <li class="item_upd menu_item">Отдельные доклады</li>
-                <li class="item_upd menu_item_main">Тематика:</li>
-                    <li class="item_upd menu_item">Обзоры тренировок</li>
-                    <li class="item_upd menu_item">Релейная защита</li>
-                    <li class="item_upd menu_item">Академические</li>
-                    <li class="item_upd menu_item">Обзоры аварий</li>
-                    <li class="item_upd menu_item">Весь контент</li>
-                <li class="item_upd menu_item_main">Дата добавления:</li>
-                <li class="item_upd menu_item">Текущий год</li>
-                <li class="item_upd menu_item">Годом ранее</li>
-                <li class="item_upd menu_item">Ещё позднее</li>
-            </ul>
+
+<div class="container-fluid_upd">
+
+    <nav class="nav_upd">
+
+        <a class="brand" href="{% url 'polls' %}">Медиапортал</a>
+
+        <div class="input-group w-50">
+            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Поиск</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="theme">по теме</a>
+                    <a class="dropdown-item" href="author">по автору</a>
+                    <a class="dropdown-item" href="description">по описанию</a>
+                </div>
+            </div>
         </div>
 
-        <div class="col pt-3">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{% url 'polls' %}">Медиапортал</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div class="nav_links">
+            <a class="nav-link" href="{% url 'add' %}">Добавть контент</a>
+            <a class="nav-link" href="/">Личный кабинет</a>
+        </div>
+    </nav>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'add' %}">Личный кабинет<span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="input-group">
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Поиск</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">по теме</a>
-                            <a class="dropdown-item" href="#">по автору</a>
-                            <a class="dropdown-item" href="#">по описанию</a>
-                        </div>
+    <main>
+        <div class="row">
+            <div class="col-2 pr-1">
+                <ul class="list-group position-fixed">
+                    <li class="item_upd menu_item_main">Тематика:</li>
+                        <li class="item_upd menu_item active">Весь контент</li>
+                        <li class="item_upd menu_item">Обзоры тренировок</li>
+                        <li class="item_upd menu_item">Релейная защита</li>
+                        <li class="item_upd menu_item">Академические</li>
+                        <li class="item_upd menu_item">Обзоры аварий</li>
+                    <li class="item_upd menu_item_main">Источник:</li>
+                        <li class="item_upd menu_item">Видео техучебы</li>
+                        <li class="item_upd menu_item">Медиапортал СО ЕЭС</li>
+                        <li class="item_upd menu_item">Лекции в Эксперте</li>
+                        <li class="item_upd menu_item">Отдельные доклады</li>
+                    <li class="item_upd menu_item_main">Дата добавления:</li>
+                    <li class="item_upd menu_item">Текущий год</li>
+                    <li class="item_upd menu_item">Годом ранее</li>
+                    <li class="item_upd menu_item">Ещё позднее</li>
+                </ul>
+            </div>
+
+            <div class="col pt-3">
+                {% block promoblock %}
+                {% endblock %}
+
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <div class="col-3_upd pt-3">
+                <div class="card_upd">
+                    <div class="card-body_upd">
+                        <button type="button" class="btn dark btn-lg btn-block">
+                            <span class="badge badge-secondary mr-2">5✪ ! </span><br>Лучшие по рейтингу:
+                        </button>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                     </div>
                 </div>
-            </nav>
 
+                <div class="card_upd">
+                    <div class="card-body_upd">
+                            <button type="button" class="btn dark btn-lg btn-block">
+                            <span class="badge badge-secondary mr-2">New</span><br>Недавно добавлены:
+                            </button>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
 
-{% block promoblock %}
-{% endblock %}
-
-{% block content %}
-{% endblock %}
-
+                <div class="card_upd">
+                    <div class="card-body_upd">
+                        <button type="button" class="btn dark btn-lg btn-block">
+                        <span class="badge badge-secondary mr-2">‱</span><br>Самые обсуждаемые:
+                        </button>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-<div class="col-3_upd pt-3">
-    <div class="card_upd" style="width: 18rem;">
-        <div class="card-body_upd">
-            <button type="button" class="btn dark btn-lg btn-block">
-                <span class="badge badge-secondary mr-2">✪     ! </span>Лучшие по рейтингу:
-            </button>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-    </div>
-
-    <div class="card_upd" style="width: 18rem;">
-        <div class="card-body_upd">
-                <button type="button" class="btn dark btn-lg btn-block">
-                <span class="badge badge-secondary mr-2">New</span>Недавно добавлены:
-                </button>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-    </div>
-
-    <div class="card_upd" style="width: 18rem;">
-        <div class="card-body_upd">
-            <button type="button" class="btn dark btn-lg btn-block">
-            <span class="badge badge-secondary mr-2">‱</span>Самые обсуждаемые:
-            </button>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-    </div>
-</div>
-
-</div>
-
-
-
+    </main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

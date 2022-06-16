@@ -67,7 +67,6 @@ class Content(models.Model):
     updated = models.DateTimeField(auto_now=True)
     tag = models.ManyToManyField(Tag, blank=True, related_name='messages', verbose_name='Тэги записи')
     active = models.BooleanField(default=True, verbose_name='Признак актуальности')
-    # comment = models.
 
     class Meta:
         ordering = ('-created',)
@@ -87,6 +86,7 @@ class Content(models.Model):
 class Comment(models.Model):
     name = models.CharField(max_length=128, verbose_name='Автор отзыва', blank=True)
     text = models.TextField(verbose_name='Текст отзыва')
+    added = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     content = models.ForeignKey(Content, on_delete=models.CASCADE, verbose_name='comment')
 
     def __str__(self):

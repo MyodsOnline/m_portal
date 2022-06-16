@@ -4,7 +4,7 @@
 
 {% block promoblock %}
 
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron_upd">
       <div class="container">
           <h1 class="display-4">Место хранения медиа контента</h1>
           <p class="lead">Медиапортал призван классифицировать и упорядочить имеющиеся в распоряжении диспетчерского центра видеоматериалы.</p>
@@ -16,10 +16,9 @@
 
 
 {% block content %}
-
-<div class="card-deck">
+<div class="row justify-content-around">
   {% for i in object_list %}
-    <div class="card" style="width: 18rem;">
+    <div class="card col-56">
       <img class="card-img-top" alt="Card image cap" src="
         {% if i.image %}
             {{ i.image.url }}
@@ -42,6 +41,7 @@
     </div>
   {% endfor %}
 </div>
+
 <div class="pagination_block">
     <ul class="pagination justify-content-center">
         <li class="page-item disabled">

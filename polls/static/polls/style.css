@@ -1,3 +1,43 @@
+.container-fluid_upd {
+    width: 100%;
+    padding: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+}
+
+.nav_upd {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    z-index: 1020;
+    padding: .5rem 2rem;
+    background-color: #f8f9fa;
+}
+
+a.brand {
+    font-size: 1.6rem;
+    color: black;
+    text-decoration: none;
+    font-weight:400;
+}
+
+a.brand:hover,
+button.btn_upd:hover {
+    color: black;
+}
+
+.nav_links {
+    display: flex;
+}
+
+main {
+    display: flex;
+    margin: 0 20px;
+}
+
 .item_upd {
     position: relative;
     display: block;
@@ -7,14 +47,33 @@
     /* border: 1px solid rgba(0,0,0,.125); */
 }
 .menu_item_main {
-    border-bottom: 1px solid rgba(0,0,0,.125);
-    margin: 0.55rem 0;
+    border-top: 1px solid rgba(0,0,0,.125);
+    margin: 0.55rem 0 0;
     font-weight: 700;
     padding-left: 0.35rem;
 }
 
+.menu_item_main:first-child {
+    border-top: none;
+}
+
+.active {
+    background: #e9ecef;
+}
+
+.menu_item:hover {
+    cursor: pointer;
+    background: #f8f9fa;
+}
+
+.btn span.badge {
+    top: 4px;
+    font-size: 1.2rem;
+}
+
 .single {
     display: flex;
+    justify-content: center;
     margin: 30px 0;
 }
 
@@ -23,6 +82,25 @@
     width: 100%;
     flex: 0 0 25%;
     max-width: 25%;
+}
+
+.col-56 {
+    flex: 0 0 46%;
+    max-width: 47%;
+    margin-bottom: 15px;
+}
+
+.col-56 img {
+    max-height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.jumbotron_upd {
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
 }
 
 .card_upd {
@@ -41,19 +119,52 @@
 
 .dark:hover {
     color: #fff;
-    background-color: #cfcfcf;
-    border-color: #343a40;
+    background-color: #e9ecef;
 }
 
 .show.dropdown-menu {
     right: 0;
 }
 
+.comment_title {
+    padding: .4rem 2rem 1rem;
+}
+
+.comment_block {
+    background: #f8f9fa;
+    padding: .5rem;
+    border-radius: .25rem .25rem 0 0;
+}
+
 .comment {
     display: flex;
     align-items: flex-start;
-    margin-top: 30px;
-    font-weight: 100;
+    margin-top: 10px;
+}
+
+.comment:first-child {
+    margin-top: 20px;
+}
+
+h6.comment_head {
+    font-weight:300;
+}
+
+form {
+    background: #e9ecef;
+    padding: .5rem;
+    border-radius: 0 0 .25rem .25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.group {
+    margin-bottom: .5rem;
+}
+
+button.btn_upd {
+    border: 1px solid #ced4da;
+    background: #f8f9fa;
 }
 
 .pagination_block {

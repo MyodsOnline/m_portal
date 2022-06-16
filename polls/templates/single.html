@@ -4,51 +4,76 @@
 {% block content %}
 
 <div class="single">
-    <div class="row no-gutters">
+
+    <div class="card mb-3 w-100">
+    {% comment image %}
         {% if object.image %}
-            <div class="col-md-4">
-                <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
-            </div>
+            <img src="{{ object.image.url }}" class="card-img-top" alt="...">
         {% endif %}
+    {% endcomment %}
+
         {% if object.link %}
-        {% comment %}
-        <video width="320" height="240" controls>
-          <source src="https://youtu.be/UpKDm8h-xrg" type="video/mp4">
-          <source src="https://youtu.be/UpKDm8h-xrg" type="video/ogg">
-        Your browser does not support the video tag.
-        </video>
-        {% endcomment %}
-        <iframe width="200px" height="100px" src="https://www.youtube.com/embed/P2w7OcBirzM" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-        </iframe>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/P2w7OcBirzM" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        {% elif object.file %}
+            <video width="100%" height="100%" controls>
+                <source src="{{ object.file.url }}" type="video/mp4">
+                <source src="{{ object.file.url }}" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        {% elif object.image %}
+            <img src="{{ object.image.url }}" class="card-img-top" alt="...">
         {% endif %}
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{ object.title }}</h5>
-        <p class="card-text">{{ object.category }}</p>
-        <p class="card-text"><small class="text-muted">{{ object.tagline }}</small></p>
-      </div>
+
+        <div class="card-body">
+            <h5 class="card-title">{{ object.category }} {% if object.author %} // {{ object.author }} {% endif %}</h5>
+            <h3>{{ object.title }}</h3>
+            <p class="card-text">{{ object.tagline }}</p>
+            <p class="card-text"><small class="text-muted">{{ object.text }}</small></p>
+        </div>
+        <div class="card-footer text-muted">
+            Тэги: {% for tag in object.tag.all %} {{ tag }} {% endfor %}
+        </div>
     </div>
-  </div>
+
 </div>
-<h4>Комментарии</h4>
-<div class="comment">
-    <img src="{% static 'img/grily.png' %}" class="align-self-start mr-3" alt="...">
-    <div class="media-body">
-        <h5 class="mt-0">Top-aligned media</h5>
-        <p>I’m gon’ put her in a coma. You give a hundred reasons why, and you say you're really gonna try. So I sat quietly, agreed politely. Suiting up for my crowning battle. And on my 18th Birthday we got matching tattoos. So très chic, yeah, she's a classic. I am ready for the road less traveled.</p>
-        <p>I'm walking on air (tonight). But down to earth. You're original, cannot be replaced. But in another life I would be your girl. We drove to Cali and got drunk on the beach. We can dance, until we die, you and I, will be young forever. Saw you downtown singing the Blues.</p>
+
+{% comment uploaded video%}
+    <video width="320" height="240" controls>
+      <source src="https://youtu.be/UpKDm8h-xrg" type="video/mp4">
+      <source src="https://youtu.be/UpKDm8h-xrg" type="video/ogg">
+    Your browser does not support the video tag.
+    </video>
+{% endcomment %}
+{% comment uploaded video%}
+<iframe width="200px" height="100px" src="https://www.youtube.com/embed/P2w7OcBirzM" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+</iframe>
+{% endcomment %}
+
+
+<div class="comment_block">
+    <h4 class="comment_title">Комментарии</h4>
+    {% for review in object.comment_set.all %}
+    <div class="comment">
+        <img src="{% static 'img/grily.png' %}" class="align-self-start mr-3" alt="...">
+        <div class="media-body">
+            <h6 class="mt-0 comment_head">{{ review.added }}</h6>
+            <p class="comment_body">{{ review.text }}</p>
+        </div>
     </div>
+    {% endfor %}
 </div>
 
 <form action="{% url 'comment' object.id %}" method="post">
     {% csrf_token %}
-    <div class="form-group">
-        <label for="comment">Добавить коментарий</label>
+    <div class="group">
         <textarea class="form-control" id="comment" rows="4" name="text"></textarea>
     </div>
-    <button type="submit" class="btn btn-outline-secondary">Отправить</button>
+    <button type="submit" class="btn btn_upd">Отправить коментарий</button>
 </form>
 
 
