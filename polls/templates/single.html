@@ -42,12 +42,13 @@
     </div>
 </div>
 
-<form>
+<form action="{% url 'comment' object.id %}" method="post">
+    {% csrf_token %}
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Добавить коментарий</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="comment">Добавить коментарий</label>
+        <textarea class="form-control" id="comment" rows="4" name="text"></textarea>
     </div>
-    <button type="button" class="btn btn-outline-secondary">Отправить</button>
+    <button type="submit" class="btn btn-outline-secondary">Отправить</button>
 </form>
 
 

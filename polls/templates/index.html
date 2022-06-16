@@ -19,7 +19,7 @@
 
 <div class="card-deck">
   {% for i in object_list %}
-    <div class="card">
+    <div class="card" style="width: 18rem;">
       <img class="card-img-top" alt="Card image cap" src="
         {% if i.image %}
             {{ i.image.url }}
@@ -33,6 +33,11 @@
       <div class="card-footer">
         <small class="text-muted">{{ i.author }}</small>
         <a href="{{ i.link }}" class="text-muted">link</a>
+          <i>тэги:
+              {% for tag in i.tag.all %}
+                {{ tag }}
+              {% endfor %}
+          </i>
       </div>
     </div>
   {% endfor %}
