@@ -1,0 +1,9 @@
+{% for last in last_content %}
+<div class="small_box">
+    <img src="{{ last.image.url }}" width="70px" height="40px">
+    <div class="small_box_body">
+        <a href="{{ last.get_absolute_url }}">{{ last.title }}</a>
+        <p>{{ last.tagline }}</p>
+    </div>
+</div>
+{% endfor %}

@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView
 
 from pytils.translit import slugify
 
-from .models import Content
+from .models import Content, Category
 from .forms import ContentForm, ReviewForm
 
 
@@ -14,8 +14,8 @@ class ContentView(ListView):
     queryset = Content.objects.filter(active=True)
     template_name = 'index.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        content = super().get_context_data(**kwargs)
+    def get_context_data(self, *args, object_list=None, **kwargs):
+        content = super().get_context_data(*args, **kwargs)
         content['title'] = 'Mediaportal'
         content['greeting'] = 'Welcome %user_name!'
         return content

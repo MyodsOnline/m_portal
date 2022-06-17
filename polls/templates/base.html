@@ -1,4 +1,5 @@
 {% load static %}
+{% load base_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,16 +40,22 @@
             <div class="col-2 pr-1">
                 <ul class="list-group position-fixed">
                     <li class="item_upd menu_item_main">Тематика:</li>
-                        <li class="item_upd menu_item active">Весь контент</li>
-                        <li class="item_upd menu_item">Обзоры тренировок</li>
-                        <li class="item_upd menu_item">Релейная защита</li>
-                        <li class="item_upd menu_item">Академические</li>
-                        <li class="item_upd menu_item">Обзоры аварий</li>
+                        <li class="item_upd menu_item active">
+                            <a href="{% url 'polls' %}">Весь контент</a>
+                        </li>
+                        {% get_tags as tags %}
+                        {% for tag in tags %}
+                        <li class="item_upd menu_item">
+                            <a href="/"> {{ tag.description }} </a>
+                        </li>
+                        {% endfor %}
                     <li class="item_upd menu_item_main">Источник:</li>
-                        <li class="item_upd menu_item">Видео техучебы</li>
-                        <li class="item_upd menu_item">Медиапортал СО ЕЭС</li>
-                        <li class="item_upd menu_item">Лекции в Эксперте</li>
-                        <li class="item_upd menu_item">Отдельные доклады</li>
+                        {% get_categories as categories %}
+                        {% for category in categories %}
+                        <li class="item_upd menu_item">
+                            <a href="/"> {{ category.type }} </a>
+                        </li>
+                        {% endfor %}
                     <li class="item_upd menu_item_main">Дата добавления:</li>
                     <li class="item_upd menu_item">Текущий год</li>
                     <li class="item_upd menu_item">Годом ранее</li>
@@ -76,10 +83,12 @@
 
                 <div class="card_upd">
                     <div class="card-body_upd">
-                            <button type="button" class="btn dark btn-lg btn-block">
+                        <button type="button" class="btn dark btn-lg btn-block">
                             <span class="badge badge-secondary mr-2">New</span><br>Недавно добавлены:
-                            </button>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </button>
+
+                        {% get_last_content items=2 %}
+
                     </div>
                 </div>
 

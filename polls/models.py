@@ -25,7 +25,8 @@ class Category(models.Model):
 
 
 class Tag(models.Model):
-    tag = models.CharField(max_length=50, unique=True, verbose_name='Имя тэга')
+    tag = models.CharField(max_length=10, unique=True, verbose_name='Имя тэга')
+    description = models.CharField(max_length=50, unique=True, null=True, verbose_name='Описание тэга')
     slug = models.SlugField(max_length=30, unique=True)
 
     def __str__(self):
