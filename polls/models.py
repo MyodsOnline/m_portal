@@ -3,6 +3,8 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+from .utils import from_cyr_to_eng
+
 
 class Category(models.Model):
     type = models.CharField(max_length=120, unique=True, verbose_name='Тип контента')
@@ -77,7 +79,7 @@ class Content(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = from_cyr_to_eng(str(self.title))
         return super().save(*args, **kwargs)
 
     def __str__(self):
