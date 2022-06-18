@@ -69,6 +69,7 @@ main {
 .btn span.badge {
     top: 4px;
     font-size: 1.2rem;
+    vertical-align: text-bottom;
 }
 
 .single {
@@ -94,6 +95,13 @@ main {
     max-height: 150px;
     width: 100%;
     object-fit: cover;
+}
+
+.col-56 .card-footer {
+    padding: .25rem 1.25rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: 1px solid rgba(0,0,0,.125);
+    line-height: 1rem;
 }
 
 .jumbotron_upd {

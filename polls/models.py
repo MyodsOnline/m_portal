@@ -13,7 +13,7 @@ class Category(models.Model):
         return self.type
 
     def get_absolute_url(self):
-        return reverse('category_tag', kwargs={'slug': self.slug})
+        return reverse('category', kwargs={'slug': self.slug})
 
 
 # class Portal_User(User):
@@ -33,7 +33,7 @@ class Tag(models.Model):
         return self.tag
 
     def get_absolute_url(self):
-        return reverse('content_tag', kwargs={'slug': self.slug})
+        return reverse('tag', kwargs={'slug': self.slug})
 
 
 class Author(models.Model):
