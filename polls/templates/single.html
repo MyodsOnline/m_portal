@@ -13,7 +13,7 @@
     {% endcomment %}
 
         {% if object.link %}
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/P2w7OcBirzM" frameborder="0"
+            <iframe width="100%" height="100%" src="{{ object.link }}" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
             </iframe>
@@ -27,7 +27,7 @@
             <img src="{{ object.image.url }}" class="card-img-top" alt="...">
         {% endif %}
 
-        <div class="card-body">
+        <div class="single_card-body">
             <h5 class="card-title">{{ object.category }} {% if object.author %} // {{ object.author }} {% endif %}</h5>
             <h3>{{ object.title }}</h3>
             <p class="card-text">{{ object.tagline }}</p>

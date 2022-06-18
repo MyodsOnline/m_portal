@@ -30,13 +30,10 @@
         <p class="card-text">{{ i.tagline }}</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">{{ i.author }}</small>
-        <a href="{{ i.link }}" class="text-muted">link</a>
-          <i>тэги:
-              {% for tag in i.tag.all %}
-                {{ tag }}
-              {% endfor %}
-          </i>
+        <small class="text-muted">Категория: {{ i.category }}</small><br>
+          <small class="text-muted">
+              Тэги: {% for tag in i.tag.all %} {{ tag }} {% endfor %}
+          </small>
       </div>
     </div>
   {% endfor %}

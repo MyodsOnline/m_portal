@@ -13,7 +13,7 @@ class Category(models.Model):
         return self.type
 
     def get_absolute_url(self):
-        return reverse('category_tag', kwargs={'slug': self.slug})
+        return reverse('category', kwargs={'slug': self.slug})
 
 
 # class Portal_User(User):
@@ -25,14 +25,15 @@ class Category(models.Model):
 
 
 class Tag(models.Model):
-    tag = models.CharField(max_length=50, unique=True, verbose_name='Имя тэга')
+    tag = models.CharField(max_length=10, unique=True, verbose_name='Имя тэга')
+    description = models.CharField(max_length=50, unique=True, null=True, verbose_name='Описание тэга')
     slug = models.SlugField(max_length=30, unique=True)
 
     def __str__(self):
         return self.tag
 
     def get_absolute_url(self):
-        return reverse('content_tag', kwargs={'slug': self.slug})
+        return reverse('tag', kwargs={'slug': self.slug})
 
 
 class Author(models.Model):
