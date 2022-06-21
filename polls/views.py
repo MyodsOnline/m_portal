@@ -64,6 +64,19 @@ class AddComment(View):
         return redirect(content.get_absolute_url())
 
 
+class Search(ListView):
+    template_name = 'search.html'
+    context_object_name = 'content'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Content.objects.filter(title__icontains=self.request.GET.get('s'))
+
+    def get_context_data(self, *args, **kwargs):
+        content = super().get_context_data(**kwargs)
+        return content
+
+
 def main(request):
     context = {
         'title': 'Mediaportal',

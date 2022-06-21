@@ -16,8 +16,14 @@
     <nav class="nav_upd">
 
         <a class="brand" href="{% url 'polls' %}">Медиапортал</a>
-
         <div class="input-group w-50">
+            <form class="search-form" action="{% url 'search' %}" method="get">
+                <input type="text" class="form-control" placeholder="Поиск" name="s">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Поиск</button>
+                </div>
+            </form>
+            {% comment multisearch %}
             <input type="text" class="form-control" aria-label="Text input with dropdown button">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Поиск</button>
@@ -27,6 +33,7 @@
                     <a class="dropdown-item" href="description">по описанию</a>
                 </div>
             </div>
+            {% endcomment %}
         </div>
 
         <div class="nav_links">
