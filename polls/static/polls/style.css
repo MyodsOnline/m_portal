@@ -24,6 +24,12 @@ a.brand {
     font-weight:400;
 }
 
+.search-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 a.brand:hover,
 button.btn_upd:hover {
     color: black;
@@ -132,6 +138,12 @@ main {
 
 .small_box {
     display: flex;
+}
+
+.small_box img {
+    width: 70px;
+    height: auto;
+    max-height: 70px;
 }
 
 .small_box p {
