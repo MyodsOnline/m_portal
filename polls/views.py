@@ -13,7 +13,8 @@ class ContentView(ListView):
     model = Content
     queryset = Content.objects.filter(active=True)
     template_name = 'index.html'
-    paginate_by = 10
+    allow_empty = False
+    paginate_by = 4
 
     def get_context_data(self, *args, object_list=None, **kwargs):
         content = super().get_context_data(*args, **kwargs)
@@ -26,6 +27,7 @@ class CategoryContentView(ListView):
     template_name = 'index.html'
     context_object_name = 'content'
     allow_empty = False
+    paginate_by = 4
 
     def get_queryset(self):
         return Content.objects.filter(category__slug=self.kwargs['slug'])
@@ -35,6 +37,7 @@ class TagContentView(ListView):
     template_name = 'index.html'
     context_object_name = 'content'
     allow_empty = False
+    paginate_by = 4
 
     def get_queryset(self):
         return Content.objects.filter(tag__slug=self.kwargs['slug'])
